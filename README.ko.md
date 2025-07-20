@@ -1,23 +1,16 @@
-
-
-## 한국어 문서
-
-한국어 문서는 [README.ko.md](./README.ko.md)를 참조하세요.
-
 # React Step Flow
 
-A lightweight, declarative step navigator library for React with full TypeScript support.
-Works with React, Next.js, and React Native
-
-## Installation
+TypeScript 지원을 제공하는 가벼운 선언적 React 스텝 네비게이터 라이브러리입니다.
+React를 사용하는 React, Next.js, and React Native 환경에서 사용할 수 있습니다.
+## 설치
 
 ```bash
 npm install @hongpung/react-step-flow
 ```
 
-## Quick Start
+## 빠른 시작
 
-### Method 1: useStepFlow Hook (Recommended)
+### 방법 1: useStepFlow 훅 (권장)
 
 ```tsx
 import { useStepFlow } from '@hongpung/react-step-flow';
@@ -30,42 +23,42 @@ type StepProps = {
 
 const LoginStep = ({ goTo, stepProps }: StepProps<StepProps, 'login'>) => (
   <div>
-    <h1>Login</h1>
-    <p>Email: {stepProps?.email}</p>
-    <button onClick={() => goTo('profile')}>Next</button>
+    <h1>로그인</h1>
+    <p>이메일: {stepProps?.email}</p>
+    <button onClick={() => goTo('profile')}>다음</button>
   </div>
 );
 
 const ProfileStep = ({ goTo, stepProps }: StepProps<StepProps, 'profile'>) => (
   <div>
-    <h1>Profile</h1>
-    <p>Name: {stepProps?.name}</p>
-    <button onClick={() => goTo('login')}>Back</button>
-    <button onClick={() => goTo('confirm')}>Next</button>
+    <h1>프로필</h1>
+    <p>이름: {stepProps?.name}</p>
+    <button onClick={() => goTo('login')}>뒤로</button>
+    <button onClick={() => goTo('confirm')}>다음</button>
   </div>
 );
 
 const ConfirmStep = ({ goTo }: StepProps<StepProps, 'confirm'>) => (
   <div>
-    <h1>Confirm</h1>
-    <button onClick={() => goTo('profile')}>Back</button>
-    <button onClick={() => goTo('login')}>Back to Start</button>
+    <h1>확인</h1>
+    <button onClick={() => goTo('profile')}>뒤로</button>
+    <button onClick={() => goTo('login')}>처음으로</button>
   </div>
 );
 
 function App() {
   const { Flow, Step, currentStep, setCurrentStep } = useStepFlow<StepProps>({
     initialStep: 'login',
-    onStepChange: (step) => console.log('Step changed to:', step)
+    onStepChange: (step) => console.log('스텝 변경:', step)
   });
 
   return (
     <div>
-      <p>Current step: {currentStep}</p>
-      <button onClick={() => setCurrentStep('login')}>Go to Login</button>
+      <p>현재 스텝: {currentStep}</p>
+      <button onClick={() => setCurrentStep('login')}>로그인으로</button>
       <Flow>
         <Step name="login" component={LoginStep} stepProps={{ email: 'user@example.com' }} />
-        <Step name="profile" component={ProfileStep} stepProps={{ name: 'John Doe' }} />
+        <Step name="profile" component={ProfileStep} stepProps={{ name: '홍길동' }} />
         <Step name="confirm" component={ConfirmStep} />
       </Flow>
     </div>
@@ -73,7 +66,7 @@ function App() {
 }
 ```
 
-### Method 2: createStepFlow Factory
+### 방법 2: createStepFlow 팩토리(직접 step 상태를 주입)
 
 ```tsx
 import { createStepFlow } from '@hongpung/react-step-flow';
@@ -89,7 +82,7 @@ function App() {
       onStepChange={setCurrentStep}
     >
       <ExampleSteps.Step name="login" component={LoginStep} stepProps={{ email: 'user@example.com' }} />
-      <ExampleSteps.Step name="profile" component={ProfileStep} stepProps={{ name: 'John Doe' }} />
+      <ExampleSteps.Step name="profile" component={ProfileStep} stepProps={{ name: '홍길동' }} />
       <ExampleSteps.Step name="confirm" component={ConfirmStep} />
     </ExampleSteps.Container>
   );
@@ -111,7 +104,7 @@ const { Flow, Step, currentStep, setCurrentStep } = useStepFlow<StepProps>({
 const { Container, Step } = createStepFlow<StepProps>();
 ```
 
-### Step Component Props
+### Step 컴포넌트 Props
 ```tsx
 interface StepComponentProps<T, K extends keyof T> {
   goTo: (step: keyof T) => void;
@@ -119,14 +112,12 @@ interface StepComponentProps<T, K extends keyof T> {
 }
 ```
 
-## Browser Support
+## 브라우저 지원
 
-- React 16.8+ (Hooks support required)
-- Modern browsers with ES2020 support
+- React 16.8+ (훅 지원 필요)
+- ES2020을 지원하는 모던 브라우저
 - React Native 0.60+
 
-## License
+## 라이선스
 
-MIT
-
----
+MIT 
