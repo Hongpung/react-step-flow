@@ -1,0 +1,54 @@
+{
+  "name": "@hongpung/react-step-flow",
+  "version": "0.0.1",
+  "description": "Declarative step flow library with TypeScript support | 타입스크립트를 지원하는 선언형 스텝 네비게이션 라이브러리",
+  "main": "dist/common/step-flow/index.cjs",
+  "module": "dist/module/step-flow/index.js",
+  "types": "dist/module/step-flow/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/module/step-flow/index.js",
+      "require": "./dist/common/step-flow/index.cjs",
+      "types": "./dist/module/step-flow/index.d.ts"
+    }
+  },
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc --outDir dist/module",
+    "build:cjs": "tsc --module CommonJS --outDir dist/common && node scripts/rename-cjs.js",
+    "dev": "tsc --watch --outDir dist/module",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hongpung/react-step-flow.git"
+  },
+  "keywords": [
+    "react",
+    "step",
+    "flow",
+    "typescript",
+    "hongpung",
+    "step-flow"
+  ],
+  "author": "Wide-Pants (https://github.com/Wide-Pants)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Hongpung/react-step-flow/issues"
+  },
+  "homepage": "https://github.com/Hongpung/react-step-flow#readme",
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  },
+  "devDependencies": {
+    "react": "^16.8.0",
+    "@types/react": "^16.8.0",
+    "typescript": "^5.0.0"
+  }
+}
