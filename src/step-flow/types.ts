@@ -1,4 +1,4 @@
-export type StepPropsListBase = Record<string, Record<string, unknown> | undefined>;
+export type StepPropsListBase = Record<string, Record<string, any> | undefined>;
 
 export type StepName<T extends StepPropsListBase> = keyof T & string;
 
