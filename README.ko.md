@@ -1,6 +1,6 @@
 # React Step Flow
 
-TypeScript 지원을 제공하는 가벼운 선언적 React 스텝 네비게이터 라이브러리입니다.
+TypeScript 지원을 제공하는 가벼운 선언적 React 스텝 네비게이터 라이브러리입니다.<br>
 React를 사용하는 React, Next.js, and React Native 환경에서 사용할 수 있습니다.
 ## 설치
 
