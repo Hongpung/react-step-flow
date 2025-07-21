@@ -6,7 +6,7 @@
 
 # React Step Flow
 
-A lightweight, declarative step navigator library for React with full TypeScript support.
+A lightweight, declarative step navigator library for React with full TypeScript support.<br>
 Works with React, Next.js, and React Native
 
 ## Installation
