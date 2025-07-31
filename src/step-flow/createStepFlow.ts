@@ -73,7 +73,7 @@ export function createStepFlow<StepPropsList extends StepPropsListBase>() {
         console.error("Invalid component:", component);
         return null;
       }
-      return React.createElement(component, { goTo, stepProps });
+      return React.createElement(component, { goTo, stepProps: stepProps as StepPropsList[Name] });
     }, [currentStep, screenMap, goTo]);
 
     return CurrentElement;

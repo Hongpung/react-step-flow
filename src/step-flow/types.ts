@@ -1,4 +1,4 @@
-export type StepPropsListBase = Record<string, Record<string, any> | undefined>;
+export type StepPropsListBase = Record<string, object | undefined>;
 
 export type StepName<T extends StepPropsListBase> = keyof T & string;
 
@@ -11,8 +11,11 @@ export type StepProps<
   StepName extends keyof StepPropsList
 > = {
   goTo: GoToFunction<StepPropsList>;
-  stepProps?: StepPropsList[StepName];
-};
+} & (
+  undefined extends StepPropsList[StepName]
+    ? {}
+    : { stepProps: StepPropsList[StepName] }
+);
 
 export type StepComponentType<
   StepPropsList extends StepPropsListBase,
@@ -25,11 +28,9 @@ export type StepConfigComponent<
 > = {
   name: StepName;
   component: StepComponentType<StepPropsList, StepName>;
-} & (
-  undefined extends StepPropsList[StepName]
-    ? { stepProps?: StepPropsList[StepName] }
-    : { stepProps: StepPropsList[StepName] }
-);
+} & (undefined extends StepPropsList[StepName]
+  ? { stepProps?: undefined }
+  : { stepProps: StepPropsList[StepName] });
 
 export interface StepContainerProps<T extends StepPropsListBase> {
   children: React.ReactNode;
